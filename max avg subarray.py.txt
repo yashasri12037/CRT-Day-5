@@ -1,0 +1,16 @@
+class Solution:
+    def findMaxAverage(self, nums: list[int], k: int) -> float:
+        i = 0
+        j = 0
+        w_s = 0
+        m_a = float("-inf")
+        while j < len(nums):
+            w_s += nums[j]
+            if j - i + 1 < k:
+                j += 1
+            else:
+                m_a = max(m_a, w_s)
+                w_s -= nums[i]
+                i += 1
+                j += 1
+        return m_a / k
